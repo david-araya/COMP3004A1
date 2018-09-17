@@ -4,6 +4,7 @@ import junit.framework.TestCase;
 
 public class ArithmeticSolverTest extends TestCase {
 	
+	Deck card 
 	
 	public void testScore() {
 		ArithmeticSolver solver = new ArithmeticSolver();
