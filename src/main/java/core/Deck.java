@@ -4,40 +4,26 @@ import java.util.*;
 
 public class Deck {
 	protected ArrayList<Card> deck;
-	int count = 0;
 
 	Deck() // constructor creates the deck
 	{
 		deck = new ArrayList<Card>();
-		// Card[] deck = new Card[52];
-		for (int suit = 0; suit < Card.suits.length; suit += 1) {
-			for (int rank = 2; rank <= 14; rank += 1) {
+		for (int suit = 0; suit <= Card.suits.length-1; suit++) {
+			for (int rank = 1; rank <= Card.ranks.length-1; rank++) {
 
-				deck.add(new Card(Card.suits[suit], rank));
+				deck.add(new Card(Card.suits[suit], Card.ranks[rank]));
 			}
 		}
 	}
 
+	// Shuffle Deck
 	public void shuffleDeck() {
-
-		// Shuffle Deck
 		
 		Collections.shuffle(deck);
-		
-		/*
-		for (int i = 0; i < deck.size(); i++) {
-			int k = (int) (Math.random() * (deck.size() - i));
-			// swap card i with card i+k
-			
-			
-			Card tmp = deck[i];
-			deck[i] = deck[i + k];
-			deck[i + k] = tmp;
-		}
-		*/
 	}
 
 	public int getSize() {
+		System.out.println(deck.size());
 		return deck.size();
 	}
 
@@ -49,5 +35,10 @@ public class Deck {
 	public Card getAtPosition(int i)
 	{
 		return deck.get(i);
+	}
+	
+	public Card getLastPosition()
+	{
+		return deck.get(deck.size() - 1);
 	}
 }
