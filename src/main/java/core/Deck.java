@@ -45,4 +45,9 @@ public class Deck {
 
 		return deck.remove(0);
 	}
+	
+	public Card getAtPosition(int i)
+	{
+		return deck.get(i);
+	}
 }

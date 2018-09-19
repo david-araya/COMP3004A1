@@ -3,30 +3,25 @@ package core;
 import junit.framework.TestCase;
 
 public class BlackJackTest extends TestCase{
-	/*
-   	public double add(double leftOperand, double rightOperand)
-	{
-		return leftOperand + rightOperand;
-	}
-	
-	public void testAdd() {
-		ArithmeticSolver solver = new ArithmeticSolver();
 
-		assertEquals(4.0, solver.add(2, 2)); // 2 + 2 = 4
-	}
-	*/
-	
+	//Test that there are 52 cards
 	public void testSize()
 	{
 		Deck deck = new Deck();
 		assertEquals(52,deck.getSize());
 	} 
 	
-	//public void
+	public void testShuffling()
+	{
+		//Only have to run once to make sure it works
+		Deck deck = new Deck();
+		int temp = deck.getAtPosition(2).getRank();
+		System.out.println("temp: " + temp);
+		deck.shuffleDeck();
+		System.out.println("card: " + deck.getAtPosition(2).getRank());
+		assertNotSame(temp,deck.getAtPosition(2).getRank());
+	}
 	
-	//public void test
-	
-	//Test that there are 52 cards
 	// Test shuffling
 	//Test that you can select (f) input
 	//Test that you can select (c) input
