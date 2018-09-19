@@ -22,6 +22,10 @@ public class BlackJackTest extends TestCase{
 		assertEquals(52,deck.getSize());
 	} 
 	
+	//public void
+	
+	//public void test
+	
 	//Test that there are 52 cards
 	// Test shuffling
 	//Test that you can select (f) input
