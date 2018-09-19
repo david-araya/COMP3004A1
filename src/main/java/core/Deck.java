@@ -1,25 +1,48 @@
 package core;
 
-public class Deck {
-	{
-		Card[] hand = new Card[52];
+//import java.util.Arrays;
+
+public class Deck {	
+		Card[] deck;
 		int count = 0;
 
-		//Make Deck
+		public Card[] getDeck()
+		{
+		Card[] deck = new Card[52];
 		for (int suit = 0; suit < Card.suits.length; suit += 1) {
 			for (int rank = 2; rank <= 14; rank += 1) {
-				hand[count++] = new Card(Card.suits[suit], rank);
+
+				deck[count++] = new Card(Card.suits[suit], rank);
 			}
 		}
+		
+		return deck;
+		}
 
-		//Shuffle Deck
-		for (int i = 0; i < hand.length; i++) {
-			int k = (int) (Math.random() * (hand.length - i));
+		public void shuffle(Card deck[])
+		{
+			
+		// Shuffle Deck
+		for (int i = 0; i < deck.length; i++) {
+			int k = (int) (Math.random() * (deck.length - i));
 			// swap card i with card i+k
-			Card tmp = hand[i];
-			hand[i] = hand[i + k];
-			hand[i + k] = tmp;
+			Card tmp = deck[i];
+			deck[i] = deck[i + k];
+			deck[i + k] = tmp;
 		}
 	}
+		
+	public int getSize()
+	{
+		return count;
+	}
+	
+	public Card getCard() {
+
+		shuffle(getDeck());
+		
+		return deck[0];
+	}
+
 
 }
