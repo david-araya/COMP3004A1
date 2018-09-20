@@ -3,7 +3,8 @@ package core;
 public class Card {
 
 	protected static String[] suits = new String[] { "S", "H", "C", "D" };
-	protected static String[] ranks = new String[] { "J", "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K" };
+	protected static String[] ranks = new String[] { "J", "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q",
+			"K" };
 	// 2, 3, 4, 5, 6, 7, 8, 9, 10, J, Q, K, A,
 
 	private String suit;
@@ -28,8 +29,7 @@ public class Card {
 		for (int i = 0; i < ranks.length; i++) {
 			if (value == 1) {
 				return this.value;
-			}
-			else if (rank == ranks[i] && i > 10) {
+			} else if (rank == ranks[i] && i > 10) {
 				value = 10;
 
 			} else if (rank == ranks[i] && i == 1) {

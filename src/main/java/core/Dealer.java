@@ -9,7 +9,7 @@ public class Dealer {
 	protected String input;
 	protected int playerHandValues = 0;
 	protected int dealerHandValues = 0;
-	
+
 	protected int playerWins;
 	protected int dealerWins;
 
@@ -58,7 +58,7 @@ public class Dealer {
 
 	public void checkAce() {
 		for (int i = 0; i < dealersHand.size(); i++) {
-			
+
 			if (dealerHandValues > 21 && dealersHand.get(i).getRank() == "A") {
 				dealersHand.get(i).setValue(1);
 			}
@@ -69,7 +69,7 @@ public class Dealer {
 			if (playerHandValues > 21 && playersHand.get(i).getRank() == "A") {
 				playersHand.get(i).setValue(1);
 			}
-			 getPlayerHandValue();
+			getPlayerHandValue();
 		}
 
 	}
@@ -91,13 +91,13 @@ public class Dealer {
 			}
 		}
 	}
-	
+
 	public void reduceSingleAce() {
 		if (dealerHandValues > 13) {
 			for (int i = 0; i < dealersHand.size(); i++) {
 				if (dealersHand.get(i).getValue() == 11 && dealerHandValues > 13) {
 					dealersHand.get(i).setValue(1);
-					
+
 					getDealerHandValue();
 				}
 			}
@@ -107,7 +107,7 @@ public class Dealer {
 			for (int i = 0; i < playersHand.size(); i++) {
 				if (playersHand.get(i).getValue() == 11 && dealerHandValues > 13) {
 					playersHand.get(i).setValue(1);
-					
+
 					getPlayerHandValue();
 				}
 			}
@@ -124,45 +124,59 @@ public class Dealer {
 			playerHandValues += playersHand.get(i).getValue();
 		}
 
+		System.out.println("Players Cards: " + playersHand.get(0).getSuit() + playersHand.get(0).getRank() + ", "
+				+ playersHand.get(1).getSuit() + playersHand.get(1).getRank());
+
 		checkAce();
+
+		System.out.println("Players Score: " + getPlayerHandValue());
+
+		for (int i = 0; i < playersHand.size(); i++) {
+			if (getDealerHandValue() > 21 && playersHand.get(i).getValue() == 1) {
+				System.out.println("You have busted, the dealer wins");
+				System.exit(0);
+			}
+		}
 	}
-	
-	public boolean checkBlackJack()
-	{
-		if(playerHandValues == 21 || dealerHandValues == 21)
-		{
+
+	public boolean checkBlackJack() {
+		if (playerHandValues == 21 || dealerHandValues == 21) {
 			return true;
 		} else {
 			return false;
 		}
 	}
-	
-	public boolean checkPlayerHasInitialCards()
-	{
+
+	public boolean playerInitialCards() {
 		String firstCardValue;
 		String secondCardValue;
-		
+
 		firstCardValue = playersHand.get(0).getSuit() + playersHand.get(0).getRank();
 		secondCardValue = playersHand.get(1).getSuit() + playersHand.get(1).getRank();
-		
-		if(firstCardValue instanceof String && secondCardValue instanceof String)
-		{
+
+		if (firstCardValue instanceof String && secondCardValue instanceof String) {
 			return true;
 		} else {
 			return false;
 		}
 	}
-	
-	public boolean checkDealerHasInitialCards()
-	{
+
+	public boolean playerStand() {
+		return true;
+	}
+
+	public boolean dealerStand() {
+		return true;
+	}
+
+	public boolean dealerInitialCards() {
 		String firstCardValue;
 		String secondCardValue;
-		
+
 		firstCardValue = dealersHand.get(0).getSuit() + dealersHand.get(0).getRank();
 		secondCardValue = dealersHand.get(1).getSuit() + dealersHand.get(1).getRank();
-		
-		if(firstCardValue instanceof String && secondCardValue instanceof String)
-		{
+
+		if (firstCardValue instanceof String && secondCardValue instanceof String) {
 			return true;
 		} else {
 			return false;
@@ -180,7 +194,26 @@ public class Dealer {
 			dealerHandValues += dealersHand.get(i).getValue();
 		}
 
+		System.out.println("Dealers Cards: " + dealersHand.get(0).getSuit() + dealersHand.get(0).getRank() + ", "
+				+ dealersHand.get(1).getSuit() + dealersHand.get(1).getRank());
+
 		checkAce();
+
+		System.out.println("Dealers Score: " + getDealerHandValue());
+
+		for (int i = 0; i < dealersHand.size(); i++) {
+			if (getDealerHandValue() <= 16) {
+				dealerHit(deck);
+
+			} else if (getDealerHandValue() == 17 && dealersHand.get(i).getRank() == "A") {
+				dealerHit(deck);
+			} else {
+				dealerStand();
+			}
+		}
+		
+		
+
 	}
 
 	public String getInput(String input) {

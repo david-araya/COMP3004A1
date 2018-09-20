@@ -8,8 +8,8 @@ public class Deck {
 	Deck() // constructor creates the deck
 	{
 		deck = new ArrayList<Card>();
-		for (int suit = 0; suit <= Card.suits.length-1; suit++) {
-			for (int rank = 1; rank <= Card.ranks.length-1; rank++) {
+		for (int suit = 0; suit <= Card.suits.length - 1; suit++) {
+			for (int rank = 1; rank <= Card.ranks.length - 1; rank++) {
 
 				deck.add(new Card(Card.suits[suit], Card.ranks[rank]));
 			}
@@ -18,7 +18,7 @@ public class Deck {
 
 	// Shuffle Deck
 	public void shuffleDeck() {
-		
+
 		Collections.shuffle(deck);
 	}
 
@@ -30,14 +30,12 @@ public class Deck {
 
 		return deck.remove(0);
 	}
-	
-	public Card getAtPosition(int i)
-	{
+
+	public Card getAtPosition(int i) {
 		return deck.get(i);
 	}
-	
-	public Card getLastPosition()
-	{
+
+	public Card getLastPosition() {
 		return deck.get(deck.size() - 1);
 	}
 }
