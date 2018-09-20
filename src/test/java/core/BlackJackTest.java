@@ -97,8 +97,33 @@ public class BlackJackTest extends TestCase{
 	}
 	
 	//Test that a hand can count two aces worth 1 each
+	public void testThatTwoAcesCountAs1()
+	{
+		Deck deck = new Deck();
+		Dealer dealer = new Dealer(deck);
+
+		dealer.dealersHand.get(0).setRank("A");
+		dealer.dealersHand.get(1).setRank("A");
+		
+		assertEquals("A",dealer.dealersHand.get(0).getRank());
+		assertEquals("A",dealer.dealersHand.get(1).getRank());
+		
+		assertEquals(22,dealer.getDealerHandValue());
+		dealer.checkAce();
+		assertEquals(12,dealer.getDealerHandValue());
+	}
 	
 	//Test that J,Q,K count as 10
+	public void testRanksValuedAt10()
+	{
+		Card Jack = new Card("S","J");
+		Card Queen = new Card("S","Q");
+		Card King = new Card("S","K");
+		
+		assertEquals(10, Jack.getValue());
+		assertEquals(10, Queen.getValue());
+		assertEquals(10, King.getValue());
+	}
 	
 	//Test that a players initial black jack is detected
 	//Test that a dealers initial black jack is detected
