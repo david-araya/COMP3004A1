@@ -23,7 +23,6 @@ public class Deck {
 	}
 
 	public int getSize() {
-		System.out.println(deck.size());
 		return deck.size();
 	}
 

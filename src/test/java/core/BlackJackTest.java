@@ -25,21 +25,7 @@ public class BlackJackTest extends TestCase{
 		
 		assertNotSame(card1,card);
 	}
-	
-	//Test that you can select (f) input
-	public void testInputOfC()
-	{
-		Deck deck = new Deck();
-		Dealer dealer = new Dealer(deck);
-		//assertEquals("c",dealer.getInput());
-		
-	}
-	//Test that you can select (c) input
-	public void testInputOfF()
-	{
-		
-	}
-	
+
 	//Test an ace can count as 1 or 11
 	public void testAceCanBe1or11()
 	{
@@ -183,6 +169,25 @@ public void testThatTwoAcesCountAs1or11()
 		assertEquals(true,dealer.checkPlayerHasInitialCards());
 	}
 	
+	//Test that scoring of players hand is displayed and is correct
+	public void testPlayerScoringIsCorrect()
+	{
+		Deck deck = new Deck();
+		Dealer dealer = new Dealer(deck);
+
+		assertEquals(dealer.getDealerHandValue(), dealer.dealersHand.get(0).getValue() + dealer.dealersHand.get(1).getValue());
+	}
+	
+	//Test that scoring of dealers hand is displayed and is correct	
+	public void testDealerScoringIsCorrect()
+	{
+		Deck deck = new Deck();
+		Dealer dealer = new Dealer(deck);
+
+		assertEquals(dealer.getPlayerHandValue(), dealer.playersHand.get(0).getValue() + dealer.playersHand.get(1).getValue());
+	}
+	
+	
 	//Test that a player can repeatedly hit
 	
 	//Test that a player can stand
@@ -201,8 +206,4 @@ public void testThatTwoAcesCountAs1or11()
 	//Test that at the end of the dealers turn his cards are visible
 	
 	//Test that if the dealer busts, a player wins
-	
-	//Test that scoring of players hand is displayed and is correct
-	
-	//Test that scoring of dealers hand is displayed and is correct	
 }
