@@ -129,14 +129,14 @@ public class BlackJackTest extends TestCase {
 
 	// Test that a players initial black jack is detected & Test that a dealers
 	// initial black jack is detected
-	public void testPlayersBlackjack() {
+	public void testBlackjack() {
 		Deck deck = new Deck();
 		Dealer dealer = new Dealer(deck);
 
 		dealer.dealerHandValues = 21;
 		assertEquals(true, dealer.checkBlackJack());
 
-		dealer.playerHandValues = 22;
+		dealer.playerHandValues = 21;
 		assertEquals(true, dealer.checkBlackJack());
 	}
 

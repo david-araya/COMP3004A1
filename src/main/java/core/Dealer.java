@@ -129,8 +129,6 @@ public class Dealer {
 
 		checkAce();
 
-		System.out.println("Players Score: " + getPlayerHandValue());
-
 		for (int i = 0; i < playersHand.size(); i++) {
 			if (getDealerHandValue() > 21 && playersHand.get(i).getValue() == 1) {
 				System.out.println("You have busted, the dealer wins");
@@ -182,6 +180,20 @@ public class Dealer {
 			return false;
 		}
 	}
+	
+	public void getCards() {
+		String dealerCards;
+		String playerCards;
+
+		dealerCards = dealersHand.get(0).getSuit() + dealersHand.get(0).getRank() + ", " + dealersHand.get(1).getSuit() + dealersHand.get(1).getRank();
+		playerCards = playersHand.get(0).getSuit() + playersHand.get(0).getRank() + ", " + playersHand.get(1).getSuit() + playersHand.get(1).getRank();
+
+
+		System.out.println("Player Cards:" + playerCards);
+		System.out.println("Player Values:" + playerHandValues);
+		System.out.println("Dealer Cards: " + dealerCards);
+		System.out.println("Dealer Values:" + dealerHandValues);
+	}
 
 	public void dealerHit(Deck deck) {
 
@@ -198,21 +210,6 @@ public class Dealer {
 				+ dealersHand.get(1).getSuit() + dealersHand.get(1).getRank());
 
 		checkAce();
-
-		System.out.println("Dealers Score: " + getDealerHandValue());
-
-		for (int i = 0; i < dealersHand.size(); i++) {
-			if (getDealerHandValue() <= 16) {
-				dealerHit(deck);
-
-			} else if (getDealerHandValue() == 17 && dealersHand.get(i).getRank() == "A") {
-				dealerHit(deck);
-			} else {
-				dealerStand();
-			}
-		}
-		
-		
 
 	}
 

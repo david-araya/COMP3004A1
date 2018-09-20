@@ -23,7 +23,10 @@ public class HomeScreen {
 			System.out.println(
 					"Players Cards: " + dealer.playersHand.get(0).getSuit() + dealer.playersHand.get(0).getRank() + ", "
 							+ dealer.playersHand.get(1).getSuit() + dealer.playersHand.get(1).getRank());
-
+			
+			System.out.println(
+					"Dealers Card: " + dealer.dealersHand.get(0).getSuit() + dealer.dealersHand.get(0).getRank());
+			
 			if (dealer.checkBlackJack()) {
 				System.out.print("BlackJack.");
 				System.out.print("Player: Hit(h) or Stand(s):");
@@ -31,10 +34,61 @@ public class HomeScreen {
 
 				if (newInput.equals("h")) {
 					dealer.playerHit(deck);
+					dealer.dealerHit(deck);
+					System.out.print("Player: Hit(h) or Stand(s):");
+					String newestInput = scanner.nextLine();
+					if (newestInput.equals("h")) {
+						dealer.playerHit(deck);
+						if (!dealer.checkBlackJack()) {
+							System.out.println("-----------");
+							dealer.getCards();
+							System.out.println("No Winner!");
+						} else {
+							System.out.println("-----------");
+							dealer.getCards();
+							System.out.println("Winner!");
+						}
+					} else if (newestInput.equals("s")) {
+						dealer.playerStand();
+						if (!dealer.checkBlackJack()) {
+							System.out.println("-----------");
+							dealer.getCards();
+							System.out.println("No Winner!");
+						} else {
+							System.out.println("-----------");
+							dealer.getCards();
+							System.out.println("Winner!");
+						}
+					}
 
 				} else if (newInput.equals("s")) {
 					dealer.playerStand();
-
+					dealer.dealerHit(deck);
+					System.out.print("Player: Hit(h) or Stand(s):");
+					String newestInput = scanner.nextLine();
+					if (newestInput.equals("h")) {
+						dealer.playerHit(deck);
+						if (!dealer.checkBlackJack()) {
+							System.out.println("-----------");
+							dealer.getCards();
+							System.out.println("No Winner!");
+						} else {
+							System.out.println("-----------");
+							dealer.getCards();
+							System.out.println("Winner!");
+						}
+					} else if (newestInput.equals("s")) {
+						dealer.playerStand();
+						if (!dealer.checkBlackJack()) {
+							System.out.println("-----------");
+							dealer.getCards();
+							System.out.println("No Winner!");
+						} else {
+							System.out.println("-----------");
+							dealer.getCards();
+							System.out.println("Winner!");
+						}
+					}
 				}
 
 			} else {
@@ -44,11 +98,62 @@ public class HomeScreen {
 				if (newInput.equals("h")) {
 					dealer.playerHit(deck);
 					dealer.dealerHit(deck);
+					System.out.print("Player: Hit(h) or Stand(s):");
+					String newestInput = scanner.nextLine();
+					if (newestInput.equals("h")) {
+						dealer.playerHit(deck);
+						if (!dealer.checkBlackJack()) {
+							System.out.println("-----------");
+							dealer.getCards();
+							System.out.println("No Winner!");
+						} else {
+							System.out.println("-----------");
+							dealer.getCards();
+							System.out.println("Winner!");
+						}
+					} else if (newestInput.equals("s")) {
+						dealer.playerStand();
+						if (!dealer.checkBlackJack()) {
+							System.out.println("-----------");
+							dealer.getCards();
+							System.out.println("No Winner!");
+						} else {
+							System.out.println("-----------");
+							dealer.getCards();
+							System.out.println("Winner!");
+						}
+					}
 
 				} else if (newInput.equals("s")) {
 					dealer.playerStand();
 					dealer.dealerHit(deck);
+					System.out.print("Player: Hit(h) or Stand(s):");
+					String newestInput = scanner.nextLine();
+					if (newestInput.equals("h")) {
+						dealer.playerHit(deck);
+						if (!dealer.checkBlackJack()) {
+							System.out.println("-----------");
+							dealer.getCards();
+							System.out.println("No Winner!");
+						} else {
+							System.out.println("-----------");
+							dealer.getCards();
+							System.out.println("Winner!");
+						}
+					} else if (newestInput.equals("s")) {
+						dealer.playerStand();
+						if (!dealer.checkBlackJack()) {
+							System.out.println("-----------");
+							dealer.getCards();
+							System.out.println("No Winner!");
+						} else {
+							System.out.println("-----------");
+							dealer.getCards();
+							System.out.println("Winner!");
+						}
+					}
 				}
+
 			}
 
 		} else if (input.equals("f")) {
