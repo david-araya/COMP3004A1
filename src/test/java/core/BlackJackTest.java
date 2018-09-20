@@ -47,14 +47,15 @@ public class BlackJackTest extends TestCase{
 		Dealer dealer = new Dealer(deck);
 
 		dealer.dealersHand.get(0).setRank("A");
-		dealer.dealersHand.get(1).setRank("A");
+		dealer.dealersHand.get(1).setRank("J");
 		
 		assertEquals("A",dealer.dealersHand.get(0).getRank());
-		assertEquals("A",dealer.dealersHand.get(1).getRank());
+		assertEquals("J",dealer.dealersHand.get(1).getRank());
 		
-		assertEquals(22,dealer.getDealerHandValue());
+		assertEquals(21,dealer.getDealerHandValue());
 		dealer.checkAce();
-		assertEquals(12,dealer.getDealerHandValue());
+		dealer.reduceBothAces();
+		assertEquals(11,dealer.getDealerHandValue());
 	}
 	
 	//Test that ace can count as 11
@@ -80,8 +81,29 @@ public class BlackJackTest extends TestCase{
 		
 		assertEquals(22,dealer.getDealerHandValue());
 		dealer.checkAce();
+		dealer.reduceBothAces();
 		assertEquals(12,dealer.getDealerHandValue());
 	}
+	
+	/*
+	 Test that if you have two aces in the same hand, 
+	 one counts as 11 and the other counts 1
+	 */
+public void testThatTwoAcesCountAs1or11()
+{
+	Deck deck = new Deck();
+	Dealer dealer = new Dealer(deck);
+
+	dealer.dealersHand.get(0).setRank("A");
+	dealer.dealersHand.get(1).setRank("A");
+	
+	assertEquals("A",dealer.dealersHand.get(0).getRank());
+	assertEquals("A",dealer.dealersHand.get(1).getRank());
+	
+	dealer.checkAce();
+	assertEquals(12,dealer.getDealerHandValue());
+	
+}
 	
 	//Test that J,Q,K count as 10
 	public void testRanksValuedAt10()
@@ -137,10 +159,6 @@ public class BlackJackTest extends TestCase{
 	
 	//Test an ace can count as 1 or 11
 	
-	/*
-		Test that if you have two aces in the same hand, 
-		one counts as 11 and the other counts 1
-	*/
 	
 	//Test that a players initial black jack is detected
 	//Test that a dealers initial black jack is detected
