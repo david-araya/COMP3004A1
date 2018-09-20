@@ -150,6 +150,21 @@ public void testThatTwoAcesCountAs1or11()
 		assertNotSame(tempSuit, dealer.playersHand.get(1).getSuit());
 	}
 	
+	//Test that a players initial black jack is detected
+	public void testPlayersBlackjack()
+	{
+		Deck deck = new Deck();
+		Dealer dealer = new Dealer(deck);
+		
+		dealer.dealerHandValues = 21;
+		assertEquals(true,dealer.checkBlackJack());
+		
+		
+		dealer.playerHandValues = 22;
+		assertEquals(true,dealer.checkBlackJack());
+	}
+	
+	//Test that a dealers initial black jack is detected
 	
 	//Test that you offer a choice between c and f input
 	
@@ -174,9 +189,6 @@ public void testThatTwoAcesCountAs1or11()
 	//Test that at the end of the dealers turn his cards are visible
 	
 	//Test that if the dealer busts, a player wins
-
-	//Test that a players initial black jack is detected
-	//Test that a dealers initial black jack is detected
 	
 	//Test that scoring of players hand is displayed and is correct
 	//Test that scoring of dealers hand is displayed and is correct	

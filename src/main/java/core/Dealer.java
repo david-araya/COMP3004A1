@@ -9,6 +9,9 @@ public class Dealer {
 	protected String input;
 	protected int playerHandValues = 0;
 	protected int dealerHandValues = 0;
+	
+	protected int playerWins;
+	protected int dealerWins;
 
 	Dealer(Deck deck) {
 
@@ -122,6 +125,16 @@ public class Dealer {
 		}
 
 		checkAce();
+	}
+	
+	public boolean checkBlackJack()
+	{
+		if(playerHandValues == 21 || dealerHandValues == 21)
+		{
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	public void dealerHit(Deck deck) {
