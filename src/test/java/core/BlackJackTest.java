@@ -27,7 +27,15 @@ public class BlackJackTest extends TestCase{
 	}
 	
 	//Test that you can select (f) input
+	public void testInputOfC()
+	{
+		
+	}
 	//Test that you can select (c) input
+	public void testInputOfF()
+	{
+		
+	}
 	
 	//Test that you offer a choice between c and f input
 	
@@ -41,8 +49,8 @@ public class BlackJackTest extends TestCase{
 	//Test that a player can stand
 
 	/*
-	Test that the hand of a player 
-	is displayed at the end of the players turn
+		Test that the hand of a player 
+		is displayed at the end of the players turn
 	*/
 	
 	//Test that the player can bust which causes the dealer to win
@@ -58,11 +66,26 @@ public class BlackJackTest extends TestCase{
 	//Test an ace can count as 1 or 11
 	
 	/*
-	Test that if you have two aces in the same hand, 
-	one counts as 11 and the other counts 1
+		Test that if you have two aces in the same hand, 
+		one counts as 11 and the other counts 1
 	*/
 	
 	//Test that ace can count as 1
+	public void testAceAs1()
+	{
+		Deck deck = new Deck();
+		Dealer dealer = new Dealer(deck);
+
+		dealer.dealersHand.get(0).setRank("A");
+		dealer.dealersHand.get(1).setRank("A");
+		
+		assertEquals("A",dealer.dealersHand.get(0).getRank());
+		assertEquals("A",dealer.dealersHand.get(1).getRank());
+		
+		assertEquals(22,dealer.getDealerHandValue());
+		dealer.checkAce();
+		assertEquals(12,dealer.getDealerHandValue());
+	}
 	
 	//Test that ace can count as 11
 	public void testAceAs11()
@@ -74,6 +97,7 @@ public class BlackJackTest extends TestCase{
 	}
 	
 	//Test that a hand can count two aces worth 1 each
+	
 	//Test that J,Q,K count as 10
 	
 	//Test that a players initial black jack is detected

@@ -9,7 +9,7 @@ public class Card {
 	
 	private String suit;
 	private String rank;
-	private int value;
+	public int value;
 
 	public Card(String suit, String rank) {
 		this.suit = suit;
@@ -27,10 +27,12 @@ public class Card {
 	
 	public int getValue()
 	{
-		
-		
 		for(int i = 0; i < ranks.length - 1; i++)
 		{
+			if(value == 1)
+			{
+				return this.value;
+			}
 			if(rank == ranks[i] && i > 10)
 			{
 				value = 10;
@@ -44,5 +46,15 @@ public class Card {
 			}
 		}
 		return value;
+	}
+	
+	public void setRank(String rank)
+	{
+		this.rank = rank;		
+	}
+	
+	public void setValue(int value)
+	{
+		this.value = value;
 	}
 }
