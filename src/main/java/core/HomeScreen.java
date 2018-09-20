@@ -1,33 +1,38 @@
 package core;
 
+import java.io.*;
+
 import java.util.Scanner;
 
 public class HomeScreen {
 	private int aceInHand = 0;
 	protected String input;
-	private static Scanner scanner = new Scanner( System.in );
-	
+	private static Scanner scanner = new Scanner(System.in);
+
 	public static void main(String[] args) {
-		
-		System.out.print("Console(c) or file(f):" );
+
+		System.out.print("Console(c) or file(f):");
 		String input = scanner.nextLine();
-		System.out.println("input = " + input);
-		
-		if(input.equals("c"))
-		{
+	
+		FileReader in = null;
+
+		if (input.equals("c")) {
 			Deck deck = new Deck();
 			Dealer dealer = new Dealer(deck);
 			
-			dealer.getInput(input);
 			
-		} else if (input.equals("f"))
-		{
-			System.out.println("hello2");
-		} else {
-			System.out.println("Please try again");
+
+		} else if (input.equals("f")) {
 			
-		}
+			try {
+				in = new FileReader("/Users/davidaraya/eclipse-workspace/COMP3004A1/src/main/resources/BlackJackGame.txt");
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
+		}else{
+		System.out.println("Please try again");
+
 	}
-	}
-	
-}
+}}

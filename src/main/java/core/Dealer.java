@@ -136,6 +136,38 @@ public class Dealer {
 			return false;
 		}
 	}
+	
+	public boolean checkPlayerHasInitialCards()
+	{
+		String firstCardValue;
+		String secondCardValue;
+		
+		firstCardValue = playersHand.get(0).getSuit() + playersHand.get(0).getRank();
+		secondCardValue = playersHand.get(1).getSuit() + playersHand.get(1).getRank();
+		
+		if(firstCardValue instanceof String && secondCardValue instanceof String)
+		{
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	public boolean checkDealerHasInitialCards()
+	{
+		String firstCardValue;
+		String secondCardValue;
+		
+		firstCardValue = dealersHand.get(0).getSuit() + dealersHand.get(0).getRank();
+		secondCardValue = dealersHand.get(1).getSuit() + dealersHand.get(1).getRank();
+		
+		if(firstCardValue instanceof String && secondCardValue instanceof String)
+		{
+			return true;
+		} else {
+			return false;
+		}
+	}
 
 	public void dealerHit(Deck deck) {
 

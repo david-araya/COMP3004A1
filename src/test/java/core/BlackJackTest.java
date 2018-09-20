@@ -150,7 +150,7 @@ public void testThatTwoAcesCountAs1or11()
 		assertNotSame(tempSuit, dealer.playersHand.get(1).getSuit());
 	}
 	
-	//Test that a players initial black jack is detected
+	//Test that a players initial black jack is detected & Test that a dealers initial black jack is detected
 	public void testPlayersBlackjack()
 	{
 		Deck deck = new Deck();
@@ -164,12 +164,24 @@ public void testThatTwoAcesCountAs1or11()
 		assertEquals(true,dealer.checkBlackJack());
 	}
 	
-	//Test that a dealers initial black jack is detected
+	//Test that the initial 2 cards of the dealer are visible
+	public void testInitial2CardsOfDealerAreVisible()
+	{
+		Deck deck = new Deck();
+		Dealer dealer = new Dealer(deck);
+		
+		assertEquals(true,dealer.checkDealerHasInitialCards());
+	}
 	
-	//Test that you offer a choice between c and f input
+	//Test that only one of the 2 cards of player are visible
 	
-	//Test that the initial 2 cards of the player are visible
-	//Test that only one of the 2 cards of dealer are visible
+	public void testInitial2CardsOfPlayerAreVisible()
+	{
+		Deck deck = new Deck();
+		Dealer dealer = new Dealer(deck);
+		
+		assertEquals(true,dealer.checkPlayerHasInitialCards());
+	}
 	
 	//Test that a player can repeatedly hit
 	
@@ -191,5 +203,6 @@ public void testThatTwoAcesCountAs1or11()
 	//Test that if the dealer busts, a player wins
 	
 	//Test that scoring of players hand is displayed and is correct
+	
 	//Test that scoring of dealers hand is displayed and is correct	
 }
