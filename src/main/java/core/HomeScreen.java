@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class HomeScreen {
 	private int aceInHand = 0;
-	
+	protected String input;
 	private static Scanner scanner = new Scanner( System.in );
 	
 	public static void main(String[] args) {
@@ -18,6 +18,8 @@ public class HomeScreen {
 			Deck deck = new Deck();
 			Dealer dealer = new Dealer(deck);
 			
+			dealer.getInput(input);
+			
 		} else if (input.equals("f"))
 		{
 			System.out.println("hello2");
@@ -26,6 +28,6 @@ public class HomeScreen {
 			
 		}
 	}
-	
+	}
 	
 }

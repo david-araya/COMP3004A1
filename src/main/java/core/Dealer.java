@@ -6,8 +6,7 @@ public class Dealer {
 	protected ArrayList<Card> dealersHand;
 	protected ArrayList<Card> playersHand;
 
-	//private int numAces = 0;
-
+	protected String input;
 	protected int playerHandValues = 0;
 	protected int dealerHandValues = 0;
 
@@ -40,7 +39,7 @@ public class Dealer {
 	public int getPlayerHandValue()
 	{
 		playerHandValues = 0;
-		for (int i = 0; i < dealersHand.size(); i++) {
+		for (int i = 0; i < playersHand.size(); i++) {
 			playerHandValues += playersHand.get(i).getValue();
 		}
 		return playerHandValues;
@@ -48,7 +47,7 @@ public class Dealer {
 		
 	public int getDealerHandValue() {
 		dealerHandValues = 0;
-		for (int i = 0; i < playersHand.size(); i++) {
+		for (int i = 0; i < dealersHand.size(); i++) {
 			dealerHandValues += dealersHand.get(i).getValue();
 		}
 		
@@ -73,6 +72,41 @@ public class Dealer {
 			}
 		}
 		
+	}
+	
+	public void playerHit(Deck deck)
+	{
+		playersHand.remove(playersHand.size()-1);
+
+		playersHand.add(deck.getCard());
+
+		playerHandValues = 0;
+		for (int i = 0; i < playersHand.size(); i++) {
+			playerHandValues += playersHand.get(i).getValue();
+		}
+		
+		checkAce();
+	}
+	
+	public void dealerHit(Deck deck)
+	{
+		
+		dealersHand.remove(dealersHand.size()-1);
+		
+		dealersHand.add(deck.getCard());
+		
+		
+		dealerHandValues = 0;
+		for (int i = 0; i < dealersHand.size(); i++) {
+			dealerHandValues += dealersHand.get(i).getValue();
+		}
+		
+		checkAce();
+	}
+	
+	public String getInput(String input)
+	{
+		return this.input = input;
 	}
 }
 
