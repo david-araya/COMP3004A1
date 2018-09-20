@@ -88,6 +88,28 @@ public class Dealer {
 			}
 		}
 	}
+	
+	public void reduceSingleAce() {
+		if (dealerHandValues > 13) {
+			for (int i = 0; i < dealersHand.size(); i++) {
+				if (dealersHand.get(i).getValue() == 11 && dealerHandValues > 13) {
+					dealersHand.get(i).setValue(1);
+					
+					getDealerHandValue();
+				}
+			}
+		}
+
+		if (playerHandValues >= 13) {
+			for (int i = 0; i < playersHand.size(); i++) {
+				if (playersHand.get(i).getValue() == 11 && dealerHandValues > 13) {
+					playersHand.get(i).setValue(1);
+					
+					getPlayerHandValue();
+				}
+			}
+		}
+	}
 
 	public void playerHit(Deck deck) {
 		playersHand.remove(playersHand.size() - 1);

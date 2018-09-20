@@ -40,6 +40,24 @@ public class BlackJackTest extends TestCase{
 		
 	}
 	
+	//Test an ace can count as 1 or 11
+	public void testAceCanBe1or11()
+	{
+		Deck deck = new Deck();
+		Dealer dealer = new Dealer(deck);
+
+		dealer.dealersHand.get(0).setRank("A");
+		dealer.dealersHand.get(1).setRank("A");
+		
+		assertEquals(11,dealer.dealersHand.get(0).getValue());
+		assertEquals(11,dealer.dealersHand.get(1).getValue());
+		
+		dealer.reduceSingleAce();
+		
+		assertEquals(11,dealer.dealersHand.get(0).getValue());
+		assertEquals(11,dealer.dealersHand.get(1).getValue());
+	}
+	
 	//Test that ace can count as 1
 	public void testAceAs1()
 	{
@@ -156,10 +174,7 @@ public void testThatTwoAcesCountAs1or11()
 	//Test that at the end of the dealers turn his cards are visible
 	
 	//Test that if the dealer busts, a player wins
-	
-	//Test an ace can count as 1 or 11
-	
-	
+
 	//Test that a players initial black jack is detected
 	//Test that a dealers initial black jack is detected
 	
